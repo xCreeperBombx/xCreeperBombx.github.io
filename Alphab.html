@@ -1,3 +1,27 @@
-<head>
-  <title></title>
-</head>
+<html>
+    <head>
+        <title>Alphab - CreeperBomb</title>
+        <style>
+             body{background-color: olivedrab; }
+             a:link{color:black}
+             a:visited{color:rgb(50, 50, 50)}
+             a:hover{color:rgb(100, 100, 100)}</style>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+      <h1>Alphab</h1>
+      <p><a href="https://esolangs.org/wiki/Alphab">Alphab</a> [ˈæl.feɪb] uses every latin alphabet letter. It was created in 2023.</p>
+      <h2>Syntax & structure</h2>
+      <ul>
+        <li>Every character has an assigned bit, which start out as zero when a program begins.</li>
+        <li>Commands are seperated by whitespace (this will be done by spaces on this page, but any whitespace can do).</li>
+        <li>There are four command layouts: all lowercase (flipif), first lowercase (print), first uppercase (jumpif), & all uppercase (query).</li>
+        <li>All lowercase will flip the first's bit if the bits of the ones coming after are all 0 (it will always flip if no letters come after).</li>
+        <li>First uppercase will jump by the first character's unicode value if the bits of the ones coming after are all 1 (it will always jump if no letters come after).</li>
+        <li>If the jump letter has a diacritic, the jump is forewards, otherwise the jump is backwards.</li>
+        <li>In all uppercase, the user can choose to flip every specified bit. Multiple letters are required for all uppercase. To flip one value, write it twice (i.e. "AA", "ÜÜ", etc.)</li>
+        <li>In first lowercase, multiple letters are, once again, required. The bits are used to print a unicode character, if the first bit is 1. Later bits are higher powers of two.</li>
+      </ul>
+      <p>In first lowercase, multiple letters are, once again, required. The bits are used to print a unicode character, if the first bit is 1. Later bits are higher powers of two.</p>
+    </body>
+</html>
