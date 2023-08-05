@@ -9,20 +9,34 @@
         <meta charset="UTF-8">
     </head>
     <body>
-      <h1>Alphab</h1>
-      <p><a href="https://esolangs.org/wiki/Alphab">Alphab</a> [ˈæl.feɪb] uses every latin alphabet letter. It was created in 2023.</p>
-      <h2>Syntax & structure</h2>
-      <ul>
-        <li>Every character has an assigned bit, which start out as zero when a program begins.</li>
-        <li>Commands are seperated by whitespace (this will be done by spaces on this page, but any whitespace can do).</li>
-        <li>There are four command layouts: all lowercase (flipif), first lowercase (print), first uppercase (jumpif), & all uppercase (query).</li>
-        <li>All lowercase will flip the first's bit if the bits of the ones coming after are all 0 (it will always flip if no letters come after).</li>
-        <li>First uppercase will jump by the first character's unicode value if the bits of the ones coming after are all 1 (it will always jump if no letters come after).</li>
-        <li>If the jump letter has a diacritic, the jump is forewards, otherwise the jump is backwards.</li>
-        <li>In all uppercase, the user can choose to flip every specified bit. Multiple letters are required for all uppercase. To flip one value, write it twice (i.e. "AA", "ÜÜ", etc.)</li>
-        <li>In first lowercase, multiple letters are, once again, required. The bits are used to print a unicode character, if the first bit is 1. Later bits are higher powers of two.</li>
-      </ul>
-      <p>In first lowercase, multiple letters are, once again, required. The bits are used to print a unicode character, if the first bit is 1. Later bits are higher powers of two.</p>
-      <footer><a href="/index.html">Back to main page</a></footer>
+        <h1>Alphab</h1>
+        <p><a href="https://esolangs.org/wiki/Alphab">Alphab</a> [ˈæl.feɪb] uses every latin alphabet letter. It was created in 2023.</p>
+        <h2>Syntax & structure</h2>
+        <ul>
+            <li>Every character has an assigned bit, which start out as zero when a program begins.</li>
+            <li>Commands are seperated by whitespace (this will be done by spaces on this page, but any whitespace can do).</li>
+            <li>There are four command layouts: all lowercase (flipif), first lowercase (print), first uppercase (jumpif), & all uppercase (query).</li>
+            <li>All lowercase will flip the first's bit if the bits of the ones coming after are all 0 (it will always flip if no letters come after).</li>
+            <li>First uppercase will jump by the first character's unicode value if the bits of the ones coming after are all 1 (it will always jump if no letters come after).</li>
+            <li>If the jump letter has a diacritic, the jump is forewards, otherwise the jump is backwards.</li>
+            <li>In all uppercase, the user can choose to flip every specified bit. Multiple letters are required for all uppercase. To flip one value, write it twice (i.e. "AA", "ÜÜ", etc.)</li>
+            <li>In first lowercase, multiple letters are, once again, required. The bits are used to print a unicode character, if the first bit is 1. Later bits are higher powers of two.</li>
+        </ul>
+        <p>In first lowercase, multiple letters are, once again, required. The bits are used to print a unicode character, if the first bit is 1. Later bits are higher powers of two.</p>
+        
+        <h2>Useful code & basic programs</h2>
+        <p>Not a:</p>
+        <pre> a</pre>
+        <p>Set a to one:</p>
+        <pre> aa</pre>
+        <p>Set a to zero:</p>
+        <pre> aa a</pre>
+        <p>A or b on c:</p>
+        <pre> cc cab</pre>
+        <p>A and b on c (parentheses are for if you want to preserve a & b):</p>
+        <pre> cc a b c cab (a b)</pre>
+        <p>Hello world program:</p>
+        <pre> aa aBBBABBA aABABBAA aBBAABAA aBBAABAA aAAAABAA aBBBBBA aAAABAAA aAAAABAA aBABBAAA aBBAABAA aBBABBAA aABBBBA</pre>
+        <footer><a href="/index.html">Back to main page</a></footer>
     </body>
 </html>
