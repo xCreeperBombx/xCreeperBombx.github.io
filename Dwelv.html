@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Dwelv - CreeperBomb</title>
+		<style>
+			body{background-color: olivedrab;}
+			a:link{color:black}
+			a:visited{color:rgb(50, 50, 50)}
+			a:hover{color:rgb(100, 100, 100)}
+			#footer{position:fixed; bottom: 0px; text-align: center;}
+		</style>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+			<h1>Dwelv</h1>
+			<p>Dwelv is an esolang created by CreeperBomb in 2023 with a string-rewriting paradigm with a single editable string.
+				 It is Turing complete as it can simulate a Minsky machine. It was made whlie trying to describe how something changed in a scrapped language.</p>
+			<h2>Specification</h2>
+			<p>The first line contains how the string will start as. Each line after that will be run begins with a "state name", then a colon and space, 
+				and then the state's code ("sequence (of instructions)"/"code sequence"/etc.). If a line is not structured like this or the code is invalid, 
+				the line will be ignored and treated like a comment.The first line is run first, and states will loop unless interrupted. State names may not 
+				contain quotes, apostrophes, whitespace other than regular space, trailing or beggining space, parenthesis, square brackets, curly brackets, 
+				pipes, backticks, commas, semicolons, or colons.<br>
+				
+				Each neighboring instruction in a state is seperated by either a comma or semicolon (plus a space). If seperated by a comma and the first is 
+				run and "fails" (has no impact), then the second instruction is run but is otherwise skipped. For example, in <code>A, B, C</code> C would only 
+				be run if both A & B fail. If seperated by a semicolon, then both will always run in sequence. In <code>A, B; C</code>, C would always run but 
+				B may not. You can also use parenthesis to group instructions together, so in <code>A, (B; C)</code> C would only run when B ran, unlike the 
+				previous example.<br>
+				
+				There are two instruction types: replacement and changing the state. Replacement is structured as <code>"[Initial string]" -> "[Final string]"</code>. 
+				The quotes can also be apostrophes with no effect. Any instance of the initial string will replaced with the final string, with leftward 
+				preference (so <code>"11" -> "00"</code> on <code>111</code> results in <code>001</code>). It has some special characters that come with it, 
+				which can be escaped using <code>`</code>. They are:
+			</p>
+			<footer><a href="/index.html">Back to main page</a></footer>
+	</body>
+</html>
