@@ -11,7 +11,7 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
-			<h1>Dwelv</h1>
+			<h1><a href="https://esolangs.org/w/Dwelv">Dwelv</a></h1>
 			<p>Dwelv is an esolang created by CreeperBomb in 2023 with a string-rewriting paradigm with a single editable string.
 				 It is Turing complete as it can simulate a Minsky machine. It was made whlie trying to describe how something changed in a scrapped language.</p>
 			<h2>Specification</h2>
@@ -32,6 +32,159 @@
 				preference (so <code>"11" -> "00"</code> on <code>111</code> results in <code>001</code>). It has some special characters that come with it, 
 				which can be escaped using <code>`</code>. They are:
 			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>
+							Character(s)
+						</th>
+						<th>
+							What they do
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<code>"</code> & <code>'</code>
+						</td>
+						<td>
+							Starts/ends string in a replacement
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>`</code>
+						</td>
+						<td>
+							Escapes special characters
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>[]</code>
+						</td>
+						<td>
+							The number inside represents that many unspecified characters
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>{}</code>
+						</td>
+						<td>
+							Character(s) from a set of comma-and-space-seperated characters. In the final string slot, this acts like a randomizer
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>|</code>
+						</td>
+						<td>
+							Used to combine <code>[]</code> and <code>{}</code>, <code>[]</code> and <code>()</code>, or <code>{}</code> and <code>()</code>, such as in <code>[4|c, a, ns}</code>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>()</code>
+						</td>
+						<td>
+							Named unspecified characters. For example, <code>"(A)A" -> "A(A)"</code> would make <code>A</code> move left one character
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>`n</code>
+						</td>
+						<td>
+							Stand-in for a newline
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>#</code>
+						</td>
+						<td>
+							Stand-in for an edge of the string (start or end)
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<code>?</code>
+						</td>
+						<td>
+							Becomes user input
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>Changing the state is done by writing the state name. If the state changed to does not exist, the program will halt.</p>
+			<h2>Turing completeness</h2>
+			<p>Dwelv is Turing complete, even with the limitation of only having two characters that can be used in the string. 
+			This is provable by converting any Minsky machine program to a Dwelv program in the following manner and starting with "LR".</p>
+			<table>
+				<thead>
+					<tr>
+						<th>
+							Minsky
+						</th>
+						<th>
+							Dwelv
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							Left incrementation
+						</td>
+						<td>
+							<code>"LR" -> "LLR"</code>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Right incrementation
+						</td>
+						<td>
+							<code>"LR" -> "LRR"</code>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Left decrementation
+						</td>
+						<td>
+							<code>"LLR" -> "LR", [failstate]</code> where [failstate] is the failstate
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Right decrementation
+						</td>
+						<td>
+							<code>"LRR" -> "LR", [failstate]</code> where [failstate] is the failstate
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>The rest, namely state names and multiple operations per state, is trivial.</p>
+			<h2>Example programs</h2>
+			<p>Rickroll the user if they can't do 1+1
+<pre>1+1=?
+Not sorry: "2"-> "2", "1+1=[1]" -> "Never gonna give you up, never gonna let you down"; Halt</pre>
+Hello world/quine
+<pre>Hello world</pre>
+Truth machine
+<pre>?
+Truth: "0" -> "0", ("1" -> "11", "[1]" -> "?"; Truth); Halt</pre>
+A bunch of programs to test implementations (also should probably test truth and Minsky machines)
+<pre>Test: "Not" -> "Code"</pre>
+<pre>Not
+Test: "Not" -> "Code</pre>
+<pre>bnn
+: ""  -> "a"; "#ab" -> "b"
+;Should become "banana"</pre></p>
 			<footer><a href="/index.html">Back to main page</a></footer>
 	</body>
 </html>
