@@ -170,21 +170,26 @@
 			</table>
 			<p>The rest, namely state names and multiple operations per state, is trivial.</p>
 			<h2>Example programs</h2>
-			<p>Rickroll the user if they can't do 1+1
-<pre>1+1=?
-Not sorry: "2"-> "2", "1+1=[1]" -> "Never gonna give you up, never gonna let you down"; Halt</pre>
-Hello world/quine
-<pre>Hello world</pre>
-Truth machine
-<pre>?
-Truth: "0" -> "0", ("1" -> "11", "[1]" -> "?"; Truth); Halt</pre>
-A bunch of programs to test implementations (also should probably test truth and Minsky machines). They should become <code>Test: "Not" -> "Code"</code>, <code>Not</code>, and <code>banana</code>, respectively
-<pre>Test: "Not" -> "Code"</pre>
-<pre>Not
-Test: "Not" -> "Code</pre>
-<pre>bnn
-: ""  -> "a"; "#ab" -> "b"
-;Should become "banana"</pre>
+				<p>Rickroll the user if they can't do 1+1: <pre>
+					1+1=?
+					Not sorry: "2"-> "2", "1+1=[1]" -> "Never gonna give you up, never gonna let you down"; Halt</pre>
+				Hello world/quine <pre>
+					Hello world</pre>
+				Truth machine <pre>
+					?
+					Truth: "0" -> "0", ("1" -> "11", "[1]" -> "?"; Truth); Halt </pre>
+				Fibbinacci sequence <pre>
+					.12
+					A: ".1" -> "10."; "01" -> "10", B
+					B: "0" -> "2", C
+					C: "12" -> "21", ("2" -> "0"; "1" -> "2"; "0" -> "1"; "#1" -> "#.1"; A)</pre>
+				A bunch of programs to test implementations (also should probably test truth and Minsky machines). They should become <code>Test: "Not" -> "Code"</code>, <code>Not</code>, and <code>banana</code>, respectively <pre>
+					Test: "Not" -> "Code"</pre><pre>
+					Not
+					Test: "Not" -> "Code</pre><pre>
+					bnn
+					: ""  -> "a"; "#ab" -> "b"
+					;Should become "banana"</pre>
 			<footer><a href="/index.html">Back to main page</a></footer>
 	</body>
 </html>
