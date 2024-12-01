@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Asic - CreeperBomb</title>
+        <style>
+            body{background-color: olivedrab; }
+            a:link{color:black}
+            a:visited{color:rgb(50, 50, 50)}
+            a:hover{color:rgb(100, 100, 100)}
+            #footer{position:fixed; bottom: 0px; text-align: center;}
+        </style>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Asic</h1>
+            <p>Asic Asic ("ah-sick" /a.sık/) is an esolang created by me in 2023. The name comes from "adic" (as in "5-adic integer") and "sick" (as in cool, not ill). It is many an excuse to show off adic bases, especially the used 5-adic integers.</p>
+            <h2>Numbers</h2>
+                <p>Numbers are all 5-adic integers. To show repeated digits, overlines (via macrons) are used over the repeating numbers. For example, 4̄ is …44444444, 0̄1̄2̄3̄4̄23 is …01234012340123423, and 13̄4̄2 is nonsense (due to how adic numbers work, a digit to the left of infinite digits is simple not a thing). If the only digit repeated is 0, i.e. a number of the form 0̄…XYZ, the 0̄ does not need to be written. For example, the decimal number "12" would be written as "22" as well as "0̄22". Any redundancy, such as "1̄1̄" instead of "1̄" or "1̄2̄1" instead of "2̄1̄", is just as accepted as the "optimal" form</p>
+                <p>This notation is also how numbers are printed. An interpreter or complier of Asic may or may not use the "optimal" form of a number when printing.</p>
+            <h2>Commands</h2>
+            <p>Commands are seperated by at least one newline. All other whitespace is ignored unless specified otherwise.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Text & name</th>
+                        <th>Description</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Assignment</td>
+                        <td>Assigns what's on the left to the right</td>
+                        <td>If a function is on the left, it should be in the format name(arg1 argr2 arg3 …) and none of the dummy argument names should be variable names (# being unusuable in function & variable names but usuable in argument names is helpful for this). The spaces between argument names is required. If a function when called is prefixed with #, then the function is run digitwise; each digit is put in the function and then the last digit of the result is the digit of the resulting number.</td>
+                    </tr>
+                    <tr>
+                        <td><code>+</code> <code>-</code> <code>*</code> <code>^</code> <code>÷</code> <code>%</code> <code>!</code> <code>&</code> <code>~</code> <br />Math/digitwise operations</td>
+                        <td>Adds two numbers, subtracts two numbers, multiplies two numbers, exponentiates two numbers (fractional part is removed), divides two numbers (fractional part is removed), mods two numbers, negates a number, digitwise ands (the last digit of the product of two digits is the and of those digits) two numbers, and digitwise ors (the last digit of the difference of the sum of the digits and the product of the digits is the or of those digits) a number</td>
+                        <td>The biargumented operations are surronded by parenthesis (unless the least nested, like in <code>x = 2 + x</code>) and go between their arguments, while the monoargumented operations don't require parenthesis anytime and go before their argument</td>
+                    </tr>
+                    <tr>
+                        <td><code>input x</code> Input <br /><code>print x</code> Ouput</td>
+                        <td>Sets x to user input and prints x, respectively</td>
+                        <td>I/O is only numerical</td>
+                    </tr>
+                    <tr>
+                        <td><code>i</code> <code>e</code> <code>pi</code>/<code>π</code> <br />Constants</td>
+                        <td>Put next to a number, is equal to the respective constant times that number. Otherwise, it is simply equal to that constant</td>
+                        <td>Since i is a 5-adic integer, it is possible for all multiples to be represented prefectly. The others, however, get their fractional part removed to make them integers (done after the multiplication, so <code>e+e</code> is 4 while <code>2e</code> is 5)</td>
+                    </tr>
+                    <tr>
+                        <td><code>(| |)</code> <code>(|| ||)</code> <br />Absolute value</td>
+                        <td>Takes the absolute value of what's inside</td>
+                        <td>The single-pipe one is the complex absolute value while the double-pipe one is the 5-adic absolute value</td>
+                    </tr>
+                    <tr>
+                        <td><code>(x, y, z, …)</code> <br />Lists</td>
+                        <td>When doing assignment, math, & condition-checking, all the choices must result in truth. In other words, you replace a command with a list with duplicates of a command, each with a unique combination is done</td>
+                        <td>In each of the combination, if a variable or function is a list, then in each combination for a command the item is the same across repeated mentions of that variable or function unless precended by <code>$</code>. For example, for <code>var=(1,2)</code>, <code>var=var</code> is true while <code>$var=$var</code> may be true or false</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Loops are done via recursion.</p>
+        <h2>Example programs</h2>
+            <bold>"Truth machine"</bold>: <pre>
+                input x
+                print !x</pre>
+            <bold>Actual truth machine</bold>: <pre>
+                input v
+                print v
+                truth(v)
+                truth(x) =
+                ?x=1[
+                print x
+                truth(x)
+                ]</pre>
+            <bold>1 if negative, 0 elsewhere</bold>:<pre>
+                input x
+                print ((0^(|(|x|)+x|))-(0^(|x|)))</pre>
+            <bold>Set x to a list of every 5-adic integer</bold>:<pre>
+                f(#x)=(0,1,2,3,4)
+                x=#f(0)</pre>
+    </body>
+</html>
